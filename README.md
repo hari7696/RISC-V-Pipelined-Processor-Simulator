@@ -12,18 +12,6 @@ The goal of this simulator is to demonstrate pipeline operations, including hand
 * Produces a detailed simulation trace for debugging and evaluation.
 * Simulates queues and memory as part of the pipeline.
 
-## Input
-The simulator accepts a RISC-V assembly text file as input. Each instruction in the file follows the RISC-V format. The input file is specified as a command-line argument when running the simulator.
-
-
-## Output
-The simulator generates a simulation.txt file containing the pipeline trace for each cycle. The output includes:
-
-1. Instruction Fetch and Decode Status: Displays instructions waiting or executed.
-2. Queue Contents: Shows the state of pre-issue, pre-execution, and post-execution queues.
-3. Register File: Displays the contents of the 32 general-purpose registers.
-4. Memory Contents: Shows the memory state after each cycle.
-
 ## Functional Description
 - **Instruction Fetch/Decode:** Fetches up to two instructions per cycle, decodes them, and places them in the pre-issue queue. Handles branch and break instructions.
 - **Issue Unit:** Uses the scoreboard algorithm to issue instructions while avoiding RAW, WAW, and WAR hazards.
@@ -34,8 +22,20 @@ The simulator generates a simulation.txt file containing the pipeline trace for 
 - **Memory Access:** Handles lw and sw instructions.
 - **Write-Back:** Updates the register file with results from memory and ALU operations.
 
-## How to run
+![image](https://github.com/user-attachments/assets/cf3c6789-2878-491e-9da5-1d230764e6db)
+  
+## Input
+The simulator accepts a RISC-V assembly text file as input. Each instruction in the file follows the RISC-V format. The input file is specified as a command-line argument when running the simulator.
 
+## Output
+The simulator generates a simulation.txt file containing the pipeline trace for each cycle. The output includes:
+
+1. Instruction Fetch and Decode Status: Displays instructions waiting or executed.
+2. Queue Contents: Shows the state of pre-issue, pre-execution, and post-execution queues.
+3. Register File: Displays the contents of the 32 general-purpose registers.
+4. Memory Contents: Shows the memory state after each cycle.
+
+## How to run
 ```bash
 python ./Vsim input_instructions.txt
 ```
